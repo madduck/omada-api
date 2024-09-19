@@ -17,6 +17,9 @@ def main():
                 # match, then skip this group:
                 continue
             unused = omada.getUnusedVouchers(vg['id'], maxnr=10)
+            if not unused:
+                # no vouchers left in this group, skip it
+                continue
             codes = [v['code'] for v in unused]
             print(f"{vg['name']}: {', '.join(codes)}")
 
